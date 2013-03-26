@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="socketio.js"></script>
+		<script>
+			var socket = io.connect('http://127.0.0.1:8080');
+			socket.on('message', function (data) {
+				console.log( data );
+			});
+
+			function send(){
+				console.log( e );
+				return false;
+			}
+		</script>
+	</head>
+	<body>
+		<form action="#" onsubmit="socket.send( document.getElementById('message').value ); return false;">
+			<p>
+			<input type="text" id="message" name="message" placeholder="message" />
+			<input type="submit" />
+			</p>
+		</form>
+	</body>
+</html>
