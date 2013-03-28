@@ -5,7 +5,10 @@ var app = require('express')()
 server.listen(8080);
 
 io.sockets.on('connection', function( socket ){
-	socket.on('message', function( message ){
-		io.sockets.emit( 'message', message );
+	socket.on('message', function( dataString ){
+		var position = JSON.parse( dataString );
+		position.id = socket.id;
+		io.sockets.emit( 'message', position );
 	});
 });
+
