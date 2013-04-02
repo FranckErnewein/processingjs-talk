@@ -11,16 +11,11 @@
 			var IP = '127.0.0.1';
 
 			var socket = io.connect('http://' + IP + ':8080/');
-			socket.on('message', function (data) {
-				Processing.getInstanceById('sketch').drawLine( data.id, data.x, data.y );
+			socket.on('tweet', function (data) {
+				console.log( data );
+				Processing.getInstanceById('sketch').drawTweet( data );
 			});
 
-			function sendPosition( x, y ){
-				socket.send(JSON.stringify({
-					x: x, 
-					y: y
-				}));
-			}
 
 		</script>
 	</head>

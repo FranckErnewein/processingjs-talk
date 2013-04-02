@@ -22,6 +22,7 @@ class Snake{
   float oldX = null;
   float oldY = null;
   color col;
+
   Snake(){
     //init new snake with random color
     col = color( random(255), random(255), random(255) );
@@ -51,11 +52,11 @@ void draw(){
   rect( 0, 0, width, height); 
 }
 
+
 void mouseMoved(){
   sendPosition( mouseX, mouseY );
 }
 
 void drawLine( String snakeId, float x, float y ){
-  Snake s = manager.getSnake( snakeId );
-  s.drawNewSegment( x, y );
+  manager.getSnake( snakeId ).drawNewSegment( x, y );
 }

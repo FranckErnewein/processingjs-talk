@@ -11,14 +11,17 @@
 			var IP = '127.0.0.1';
 
 			var socket = io.connect('http://' + IP + ':8080/');
-			socket.on('message', function (data) {
-				Processing.getInstanceById('sketch').drawLine( data.id, data.x, data.y );
+			socket.on('setship', function (data) {
+				Processing.getInstanceById('sketch').setShip( data.id, data.x, data.y );
+			});
+			socket.on('newship', function (data) {
+				Processing.getInstanceById('sketch').createShip( data.id, data.color.r, data.color.g, data.color.b );
 			});
 
-			function sendPosition( x, y ){
-				socket.send(JSON.stringify({
+			function sendShipParam( x, y ){
+				socket.send( JSON.stringify({
 					x: x, 
-					y: y
+					y: y 
 				}));
 			}
 
