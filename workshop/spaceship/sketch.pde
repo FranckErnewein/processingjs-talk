@@ -107,6 +107,7 @@ void draw(){
 }
 
 void setShip( float id, float x, float y ){
+  console.log( id );
   manager.get( id ).velocity.set( x, y );
 }
 

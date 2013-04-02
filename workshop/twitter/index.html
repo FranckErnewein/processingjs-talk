@@ -12,7 +12,8 @@
 
 			var socket = io.connect('http://' + IP + ':8080/');
 			socket.on('tweet', function (data) {
-				console.log( data );
+				//add this:
+				data = JSON.parse( data );
 				Processing.getInstanceById('sketch').drawTweet( data );
 			});
 

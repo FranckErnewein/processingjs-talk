@@ -8,17 +8,20 @@
 		<script>
 			
 			//Set IP here :
-			var IP = '127.0.0.1';
+			var IP = '192.168.1.19';
 
 			var socket = io.connect('http://' + IP + ':8080/');
 			socket.on('message', function (data) {
-				Processing.getInstanceById('sketch').drawLine( data.id, data.x, data.y );
+				Processing.getInstanceById('sketch').drawLine( data.id, data.x, data.y, data.r, data.g, data.b );
 			});
 
-			function sendPosition( x, y ){
+			function sendPosition( x, y, r, g, b ){
 				socket.send(JSON.stringify({
 					x: x, 
-					y: y
+					y: y,
+					r: r,
+					g: g,
+					b: b
 				}));
 			}
 
